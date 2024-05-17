@@ -6,7 +6,7 @@ This is for educational purposes and it is not meant for production.
 
 # Prerequisites
 
-This project depends on [expres backend](https://github.com/emmanouil1989/expess-drizzleorm-postgresql). It need the server to run locally and that server requires a database container to run on docker. Also a registratio process hasn't been implemented yet. An API client has been used to call the register api and create a user to authenticate.
+This project depends on [express backend](https://github.com/emmanouil1989/expess-drizzleorm-postgresql). It need the server to run locally and that server requires a database container to run on docker. Also a registratio process hasn't been implemented yet. An API client has been used to call the register api and create a user to authenticate.
 
 To run the project:
 
