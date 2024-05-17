@@ -12,5 +12,3 @@ To run the project:
 
 - Install libraries using your favorite package manager. `npm install`
 - `ng serve` to start the project
-
-# angular-crypto-list-app
