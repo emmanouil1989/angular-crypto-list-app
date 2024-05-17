@@ -1,0 +1,16 @@
+<h1 class="text-4xl pb-2 content-center flex justify-center w-full">
+  Crypto list
+</h1>
+<section>
+  <ul
+    class="p-2 h-full w-full grid md:grid-cols-4 grid-cols-1 lg:grid-cols-[repeat(auto-fit,minmax(min(100%,400px),1fr))] gap-4"
+  >
+    @for (crypto of cryptos$; track $index) {
+
+    <li>
+      <app-crypto-list-item [cyproItem]="crypto"></app-crypto-list-item>
+    </li>
+
+    }
+  </ul>
+</section>

@@ -1,0 +1,21 @@
+@if(cyproItem){
+<div
+  class="flex flex-row gap-4 rounded border border-2 border-gray-200 justify-center p-8"
+>
+  <div [id]="cyproItem.id" class="w-full h-full flex flex-col gap-2">
+    <p class="flex gap-2">
+      <span>{{ cyproItem.name }}</span>
+      <span>({{ cyproItem.symbol }})</span>
+    </p>
+
+    <span>{{ cyproItem.price | currency : "GBD" }}</span>
+  </div>
+  <img
+    class="w-12 h-12 place-self-center"
+    [src]="cyproItem.iconUrl"
+    alt="Exterior photo of {{ cyproItem.name }}"
+    crossorigin
+  />
+</div>
+
+}
