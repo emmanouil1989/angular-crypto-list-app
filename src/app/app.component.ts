@@ -28,9 +28,7 @@ export class AppComponent {
   ngOnInit() {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        console.log('event', event.urlAfterRedirects);
         this.currentPath = event.urlAfterRedirects;
-        console.log('current path', this.currentPath);
       }
     });
   }

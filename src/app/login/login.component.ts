@@ -49,7 +49,6 @@ export class LoginComponent {
         )
         .pipe(
           catchError((errorResponse: HttpErrorResponse) => {
-            console.log(errorResponse);
             this.toaster.error(errorResponse.error, 'This is an Error');
             return throwError(
               () => new Error('Something bad happened; please try again later.')
