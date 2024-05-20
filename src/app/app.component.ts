@@ -1,5 +1,10 @@
 import { Component, Inject, inject } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterOutlet,
+} from '@angular/router';
 import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
 import { UserInterface } from './login/user.interface';
@@ -15,9 +20,20 @@ export class AppComponent {
   authService = inject(AuthService);
   toaster = inject(ToastrService);
   router = inject(Router);
+  activeRoute = inject(ActivatedRoute);
   http = inject(HttpClient);
+  currentPath: string = '';
   title = 'angular-cypto';
 
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        console.log('event', event.urlAfterRedirects);
+        this.currentPath = event.urlAfterRedirects;
+        console.log('current path', this.currentPath);
+      }
+    });
+  }
   logout() {
     this.http
       .post('http://localhost:4000/auth/logout', undefined, {
