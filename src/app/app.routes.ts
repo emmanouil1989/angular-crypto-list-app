@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { authGuard } from './auth.guard';
 import { loginGuard } from './login.guard';
 import { RegisterComponent } from './register/register.component';
+import { CreateCryptoComponent } from './create-crypto/create-crypto.component';
 
 export const routes: Routes = [
   {
@@ -23,5 +24,11 @@ export const routes: Routes = [
     component: RegisterComponent,
     title: 'register',
     canActivate: [loginGuard],
+  },
+  {
+    path: 'create/crypto',
+    component: CreateCryptoComponent,
+    title: 'create crypto',
+    canActivate: [authGuard],
   },
 ];

@@ -18,15 +18,26 @@
 </header>
 } @if (authService.getLocalStorageUser()) {
 
-<header class="p-2 flex flex-row gap-2 w-full p-2 justify-end items-center">
-  <div>{{ authService.getLocalStorageUser().userName }}</div>
+<header
+  class="flex flex-row gap-2 w-full p-5 justify-between items-center rounded-md bg-gray-400"
+>
+  <nav>
+    <ul class="p-2 w-full flex flex-row gap-2">
+      <li>
+        <a href="/create/crypto">Create crypto</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="flex gap-2 flex-row items-center">
+    <div>{{ authService.getLocalStorageUser().userName }}</div>
 
-  <button
-    (click)="logout()"
-    class="bg-blue-500 p-4 rounded disabled:opacity-50"
-  >
-    Logout
-  </button>
+    <button
+      (click)="logout()"
+      class="bg-blue-500 p-4 rounded disabled:opacity-50"
+    >
+      Logout
+    </button>
+  </div>
 </header>
 
 }

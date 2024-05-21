@@ -7,7 +7,6 @@ import {
 } from '@angular/router';
 import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
-import { UserInterface } from './login/user.interface';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
