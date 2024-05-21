@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { catchError, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -39,6 +40,30 @@ export class RegisterComponent {
     this.formSubmitted = true;
 
     if (this.registerForm.valid) {
+      this.http
+        .post(
+          'http://localhost:4000/auth/register',
+          {
+            ...this.registerForm.getRawValue(),
+          },
+          {
+            withCredentials: true,
+          }
+        )
+        .pipe(
+          catchError((errorResponse: HttpErrorResponse) => {
+            this.toaster.error(errorResponse.error, 'This is an Error');
+            return throwError(
+              () => new Error('Something bad happened; please try again later.')
+            );
+          })
+        )
+        .subscribe({
+          next: (response) => {
+            this.toaster.success('You have registered successfully');
+            this.router.navigateByUrl('/login');
+          },
+        });
       console.log('register api call');
     }
   }
